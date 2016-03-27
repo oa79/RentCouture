@@ -1,0 +1,44 @@
+<h1>Rent Couture</h1>
+<style type="text/css">
+h1 {
+	color: pink;
+	font-style: italic;
+}
+
+	</style>
+​
+<div id='container'>
+
+	<div id='nav'>
+		<form>
+			<input type='text' ng-model='filter_name' placeholder='search name...'>
+			<input type='submit' value='Filter' class="btn btn-primary">
+		</form>
+	</div>
+
+	<div id='content'>
+		<div id='products'>
+			<div class='product' ng-repeat='product in products | filter: filter_name'>
+			
+				<img ng-src='./static/images/{{product.img}}' style="width:110;height:65">
+				<p>{{product.name}}</p>
+				<p>{{product.qty}} left</p>
+			</div>
+		</div>
+		<a href='#/products'>Show More</a>
+		<div id='orders'>
+			<h2>Recent Orders</h2>
+			<div ng-repeat = 'order in orders'> {{order.name}} purchased {{order.qty}} {{order.product}} {{order.created_at | date: 'MMMM dd, yyyy'}}</div>
+		</div>
+		<a href='#/orders'>Show More</a>
+		<div id='customers'>
+			<h2>New Customers</h2>
+			<ul>
+				<li ng-repeat='customer in customers'>{{customer.name}} joined the store. {{customer.created_at | date: 'MMMM dd, yyyy'}}
+				</li>
+			</ul>
+		</div>
+		<a href='#/customers'>Show More</a>
+	</div>
+
+</div>
